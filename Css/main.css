@@ -9,3 +9,10 @@ body{
     background-color: #477fa0 !important;
     font-size: 14px;
 }
+
+
+.webActive {
+    border-left: 1px solid #76ABC9 ;
+    border-right: 1px solid #76ABC9;
+    background: #396d8b;
+}

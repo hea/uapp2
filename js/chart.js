@@ -14,25 +14,26 @@ $(function(){
             type: 'area'
         },
         title: {
-            text: 'US and USSR nuclear stockpiles'
+            text: ''
         },
         /*subtitle: {
-            text: 'Source: <a href="http://thebulletin.metapress.com/content/c4120650912x74k7/fulltext.pdf">' +
-                'thebulletin.metapress.com</a>'
-        },*/
+         text: 'Source: <a href="http://thebulletin.metapress.com/content/c4120650912x74k7/fulltext.pdf">' +
+         'thebulletin.metapress.com</a>'
+         },*/
 
         xAxis: {
             allowDecimals: false,
-            categories: [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24]
-           /* labels: {
-                formatter: function () {
-                    return this.value; // clean, unformatted number for year
-                }
-            }*/
+            categories: ['01:00','02:00','03:00','04:00','05:00','06:00','07:00','08:00','09:00','10:00','11:00','12:00',
+                '13:00','14:00','15:00','16:00','17:00','18:00','19:00','20:00','21:00','22:00','23:00','24:00']
+            /* labels: {
+             formatter: function () {
+             return this.value; // clean, unformatted number for year
+             }
+             }*/
         },
         yAxis: {
             title: {
-                //text: 'Nuclear weapon states'
+                text: '攻击次数'
             },
             labels: {
                 formatter: function () {
@@ -41,7 +42,7 @@ $(function(){
             }
         },
         tooltip: {
-            pointFormat: '{series.name} produced <b>{point.y:,.0f}</b><br/>warheads in {point.x}'
+            pointFormat: '{series.name} <b>{point.y:,.0f}</b>'
         },
         plotOptions: {
             area: {
@@ -58,13 +59,10 @@ $(function(){
             }
         },
         series: [{
-            name: 'USA',
-            data: [null, null, null, null, null, 6, 11, 32, 110, 235, 369, 640,1005, 1436,
-                   2063, 3057, 4618, 6444, 9822, 15468, 20434, 24126,27387, 29459]
-        }, {
-            name: 'USSR/Russia',
-            data: [5, 25, 50, 120, 150, 200, 426, 660, 869, 1060, 1605, 2471, 3322,
-                   4238, 5221, 6129, 7089, 8339, 9399, 10538, 11643, 13092, 14478,15915]
+            name: '攻击次数',
+            data: [4238, 5221, 6129, 7089, 8339, 9399, 10538, 11643, 13092, 14478,
+                15915, 17385, 19055, 21205, 23044, 25393, 27935, 30062, 32049,
+                33952, 35804, 37431, 39197, 45000]
         }]
     });
 });
