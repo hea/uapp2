@@ -1,0 +1,11 @@
+#忽略bin文件夹
+bin/
+#忽略.idea文件夹
+.idea/
+#忽略src目录下的src.exe文件
+src/src.exe
+#忽略src目录下sqlite3.exe文件
+crc/sqlite3.exe
+#忽略src下的github.com目录
+src/github.com/
+src/static/
