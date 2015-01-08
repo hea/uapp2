@@ -3,6 +3,25 @@
  */
 
 $(function(){
+    Date.prototype.Format = function(fmt)
+    { //author: meizz
+        var o = {
+            "M+" : this.getMonth()+1,                 //月份
+            "d+" : this.getDate(),                    //日
+            "h+" : this.getHours(),                   //小时
+            "m+" : this.getMinutes(),                 //分
+            "s+" : this.getSeconds(),                 //秒
+            "q+" : Math.floor((this.getMonth()+3)/3), //季度
+            "S"  : this.getMilliseconds()             //毫秒
+        };
+        if(/(y+)/.test(fmt))
+            fmt=fmt.replace(RegExp.$1, (this.getFullYear()+"").substr(4 - RegExp.$1.length));
+        for(var k in o)
+            if(new RegExp("("+ k +")").test(fmt))
+                fmt = fmt.replace(RegExp.$1, (RegExp.$1.length==1) ? (o[k]) : (("00"+ o[k]).substr((""+ o[k]).length)));
+        return fmt;
+    }
+
     $('#areaChart').highcharts({
         exporting:{
             enabled:false
@@ -26,7 +45,7 @@ $(function(){
             categories: ['07/01','07/02','07/03','07/04','07/05','07/06','07/07','07/08','07/09','07/10','07/11','07/12',
                 '07/13','07/14','07/15','07/16','07/17','07/18','07/19','07/20','07/21','07/22','07/23','07/24'],
            labels: {
-               //rotation:35
+               rotation:65
              }
         },
         yAxis: {
@@ -66,4 +85,11 @@ $(function(){
                 24178, 30067, 31431, 34197, 47000]
         }]
     });
+
+    var mychart=$('#areaChart').highcharts();
+    var cmsa_categories=[];
+    for(var i=0;i<24;i++){
+        cmsa_categories.push((new Date()).Format("MM-dd ") +i);
+    }
+    mychart.xAxis[0].setCategories(cmsa_categories);
 });
