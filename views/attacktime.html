@@ -9,6 +9,7 @@
     <script src="../Js/jquery/jquery-1.9.1.min.js"></script>
     <script src="../Js/highchart/highcharts.js"></script>
     <script src="../Js/chart.js"></script>
+    <script type="text/javascript" src="../js/echart2/echarts-plain-map.min.js"></script>
 </head>
 <body>
 <nav class="navbar navbar-default" role="navigation" style="background-color: #438eb9;border: 0;border-radius:0px">
@@ -34,6 +35,77 @@
 </nav>
   <div class="container">
       <div id="areaChart" class="col-md-12" style="margin-top: 100px"></div>
+      <div id="main" class="col-xs-10" style="height:400px;"></div>
+      <script>
+          $(function(){
+              var myChart = echarts.init(document.getElementById('main'));
+              var option = {
+                  title : {
+                      text: '',
+                      subtext: ''
+                  },
+
+                  xAxis : [
+                      {
+                          name:"时间",
+                          type : 'value',
+                          scale:true,
+                          axisLabel : {
+                              formatter: '{value} h'
+                          },
+                          data:[1,2,3,4,5,6,7,8,9,10,11,12]
+
+                      }
+                  ],
+                  yAxis : [
+                      {
+                          name:"类型",
+                          type : 'value',
+                          scale:true,
+                          axisLabel: {
+                              formatter : function(v) {
+                                  if(v ==1 ){
+                                      return '扫描工具'
+                                  }
+                                  if(v ==2 ){
+                                      return '漏洞防护'
+                                  }
+                                  if(v ==3 ){
+                                      return 'SQL注入攻击'
+                                  } if(v ==4 ){
+                                      return '针对IE8的跨站攻击'
+                                  } if(v==5 ){
+                                      return '跨站脚本攻击'
+                                  } if(v ==6 ){
+                                      return '爬虫'
+                                  } if(v ==7 ){
+                                      return '缺失报头'
+                                  }
+                                  if(v ==8 ){
+                                      return '文件限制'
+                                  }
+                                  if(v ==9 ){
+                                      return '协议违规'
+                                  }
+
+                              }
+                          }
+                      }
+                  ],
+                  series : [
+                      {
+                          type:'scatter',
+                          symbolSize: function (){
+                              return Math.random()*20;
+                          },
+                          data: [[1,2],[2,3],[3,4],[4,5],[5,6],[6,8],[7,1],[8,7],[9,1],[10,3],[11,2],[12,2] ],
+
+                      }
+                  ]
+              };
+              myChart.setOption(option);
+          });
+      </script>
   </div>
 </body>
 </html>

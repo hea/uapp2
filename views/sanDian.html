@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>散点图示例</title>
+    <link rel="stylesheet" type="text/css" href="../Css/bootstrap/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="../Css/main.css">
+
+    <script type="text/javascript" src="../js/jquery/jquery-1.9.1.min.js"></script>
+    <script type="text/javascript" src="../js/bootstrap/bootstrap.min.js"></script>
+    <script type="text/javascript" src="../js/echart2/echarts-plain-map.min.js"></script>
+
+</head>
+<script type="text/javascript">
+    $(function(){
+        var myChart = echarts.init(document.getElementById('main'));
+        var option = {
+            title : {
+                text: '',
+                subtext: ''
+            },
+
+            xAxis : [
+                {
+                    name:"时间",
+                    type : 'value',
+                    scale:true,
+                    axisLabel : {
+                        formatter: '{value} h'
+                    },
+                    data:[1,2,3,4,5,6,7,8,9,10,11,12]
+
+                }
+            ],
+            yAxis : [
+                {
+                    name:"类型",
+                    type : 'value',
+                    scale:true,
+                    axisLabel: {
+                        formatter : function(v) {
+                            if(v ==1 ){
+                                return '扫描工具'
+                            }
+                            if(v ==2 ){
+                                return '漏洞防护'
+                            }
+                            if(v ==3 ){
+                                return 'SQL注入攻击'
+                            } if(v ==4 ){
+                                return '针对IE8的跨站攻击'
+                            } if(v==5 ){
+                                return '跨站脚本攻击'
+                            } if(v ==6 ){
+                                return '爬虫'
+                            } if(v ==7 ){
+                                return '缺失报头'
+                            }
+                            if(v ==8 ){
+                                return '文件限制'
+                            }
+                            if(v ==9 ){
+                                return '协议违规'
+                            }
+
+                        }
+                    }
+                }
+            ],
+            series : [
+                {
+                    type:'scatter',
+                    symbolSize: function (){
+                        return Math.random()*20;
+                    },
+                    data: [[1,2],[2,3],[3,4],[4,5],[5,6],[6,8],[7,1],[8,7],[9,1],[10,3],[11,2],[12,2] ],
+
+                }
+            ]
+        };
+        myChart.setOption(option);
+    });
+</script>
+<body>
+<nav class="navbar navbar-default" role="navigation" style="background-color: #438eb9;border: 0;border-radius:0px">
+    <div class="container-fluid">
+        <div class="navbar-header" style="margin-left: 150px">
+            <img src="../Css/imgs/bigdata.png" style="float: left;margin-right: 5px;margin-top: 5px">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a style="/*font-family: SimHei;*/font-size: 18px" class="navbar-brand fontWhitecol" href="index.html">大数据分析平台</a>
+        </div>
+
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav hoverbg">
+                <li><a class="webActive fontWhitecol"  href="index.html">攻击源地址</a></li>
+                <li><a class="fontWhitecol" href="attacktime.html">攻击时间</a></li>
+            </ul>
+        </div><!-- /.navbar-collapse -->
+    </div><!-- /.container-fluid -->
+</nav>
+<div class="container">
+    <div class="row">
+        <div id="main" class="col-xs-10" style="height:400px;"></div>
+       <!-- <div class="col-xs-2">
+            <h4>Top 5 省份</h4>
+            <table  class="table table-bordered table-hover table-striped table-fixed">
+                <thead>
+                <tr>
+                    <th>省份</th>
+                    <th>访问次数</th>
+                </tr>
+
+                <tbody>
+                <tr><td>北京</td><td>1671</td></tr>
+                <tr><td>上海</td><td>812</td></tr>
+                <tr><td>河北</td><td>460</td></tr>
+                <tr><td>云南</td><td>411</td></tr>
+                <tr><td>山东</td><td>255</td></tr>
+                </tbody>
+            </table>
+
+        </div>-->
+    </div>
+</div>
+</body>
+</html>
