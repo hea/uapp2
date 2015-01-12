@@ -79,6 +79,7 @@ function initDemo() {
         ]
     };
     var option2 = {
+        color: ['gold','aqua','lime'],
         title : {
             text: '',
             subtext: ''
@@ -103,8 +104,17 @@ function initDemo() {
                 mapLocation: {
                     y : 60
                 },
-                itemStyle:{
+                /*itemStyle:{
                     emphasis:{label:{show:true}}
+                },*/
+                itemStyle:{
+                    normal:{
+                        borderColor:'rgba(100,149,237,1)',
+                        borderWidth:0.5,
+                        areaStyle:{
+                            color: '#1b1b1b'
+                        }
+                    }
                 },
                 nameMap : {
                     'Afghanistan':'阿富汗',
@@ -287,7 +297,7 @@ function initDemo() {
                     'Singapore':'新加坡'
                 },
                 data:[
-                    {name :'China', value : 73206},
+                    /*{name :'China', value : 73206},
                     {name :'United States of America', value : 2179},
                     {name :'Germany', value : 114},
                     {name :'Malaysia', value : 46},
@@ -305,9 +315,91 @@ function initDemo() {
                     {name :'New Zealand', value : 1},
                     {name :'Cambodia', value : 1},
                     {name :'Brazil', value : 1},
-                    {name :'Algeria', value : 1}
+                    {name :'Algeria', value : 1}*/
 
-                ]
+                ],
+                geoCoord:{
+                    "中国":[116.4551,40.2539],
+                    '俄罗斯': [37.3704,55.4521],
+                    "波兰":[21,52.15],
+                    "卢森堡":[6.08,49.37],
+                    "阿尔及利亚":[3.1301,36.4140],
+                    "加拿大":[-123.06,49.13],
+                    "美国":[-77.02,38.53],
+                    "越南":[105.84009,21.03438],
+                    "新西兰":[174.4634,-41.1712],
+                    "马来西亚":[101.4200,3.800],
+                    "巴西":[-43.12,-22.54]
+                }
+            },{
+                name: '北京 Top10',
+                type: 'map',
+                mapType: 'world',
+                data:[],
+                markLine : {
+                    smooth:true,
+                    effect : {
+                        show: true,
+                        scaleSize: 1,
+                        period: 30,
+                        color: '#fff',
+                        shadowBlur: 10
+                    },
+                    itemStyle : {
+                        normal: {
+                            borderWidth:1,
+                            lineStyle: {
+                                type: 'solid',
+                                shadowBlur: 10
+                            }
+                        }
+                    },
+                    data : [
+                        [{name:'俄罗斯'}, {name:'中国',value:5180}],
+                        [{name:'波兰'}, {name:'中国',value:7308}],
+                        [{name:'卢森堡'}, {name:'中国',value:3057}],
+                        [{name:'阿尔及利亚'}, {name:'中国',value:2127}],
+                        [{name:'加拿大'}, {name:'中国',value:1338}],
+                        [{name:'美国'}, {name:'中国',value:1115}],
+                        [{name:'越南'}, {name:'中国',value:714}],
+                        [{name:'新西兰'}, {name:'中国',value:706}],
+                        [{name:'马来西亚'}, {name:'中国',value:651}],
+                        [{name:'巴西'}, {name:'中国',value:61}],
+
+
+                    ]
+                },
+                markPoint : {
+                    symbol:'emptyCircle',
+                    symbolSize : function (v){
+                        return 10 + v/50000
+                    },
+                    effect : {
+                        show: true,
+                        shadowBlur : 0
+                    },
+                    itemStyle:{
+                        normal:{
+                            label:{show:false}
+                        },
+                        emphasis: {
+                            label:{position:'top'}
+                        }
+                    },
+                    data : [
+                        {name :'中国', value : 51807},
+                        {name :'俄罗斯', value : 5180},
+                        {name :'波兰', value : 7308},
+                        {name :'卢森堡', value : 3057},
+                        {name :'阿尔及利亚', value : 2127},
+                        {name :'巴西', value : 1338},
+                        {name :'加拿大', value : 1115},
+                        {name :'美国', value : 714},
+                        {name :'越南', value : 706},
+                        {name :'新西兰', value : 651},
+                        {name :'马来西亚', value : 638}
+                    ]
+                }
             }
         ]
     };
@@ -327,19 +419,6 @@ function initDemo() {
             trigger: 'item',
             formatter: '{b}'
         },
-        /*legend: {
-         orient: 'vertical',
-         x:'left',
-         data:['北京 Top10', '上海 Top10', '广州 Top10'],
-         selectedMode: 'single',
-         selected:{
-         '上海 Top10' : false,
-         '广州 Top10' : false
-         },
-         textStyle : {
-         color: '#fff'
-         }
-         },*/
         dataRange: {
             min : 0,
             max : 51807,
