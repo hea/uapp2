@@ -344,7 +344,7 @@ function initDemo() {
             min : 0,
             max : 51807,
             calculable : true,
-            color: ['#ff3333', 'orange', 'yellow','lime','aqua'],
+            color: ['#ff3333', 'orange', 'yellow','lime','aqua']
 
         },
         series : [
@@ -377,7 +377,7 @@ function initDemo() {
                     },
                     data : [
 
-                    ],
+                    ]
                 },
                 geoCoord: {
                     '上海': [121.4648,31.2891],
