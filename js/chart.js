@@ -30,7 +30,8 @@ $(function(){
             enabled:false
         },
         chart: {
-            type: 'area'
+            type: 'area',
+            backgroundColor:''
         },
         title: {
             text: ''
@@ -79,7 +80,7 @@ $(function(){
         },
         series: [{
             name: '攻击次数',
-            color:'#F57C0E',
+            //color:'#F57C0E',
             data: [37385, 39055, 31205, 25226, 18945, 14235, 9400, 9521, 8974, 8522,
                 7037, 9087, 10234, 11205, 13044, 15393, 17935, 20062, 21417,
                 24178, 30067, 31431, 34197, 47000]
@@ -92,4 +93,75 @@ $(function(){
         cmsa_categories.push((new Date()).Format("MM-dd ") +i);
     }
     mychart.xAxis[0].setCategories(cmsa_categories);
+
+
+
+    $('#areaRChart2').highcharts({
+        exporting:{
+            enabled:false
+        },
+
+        credits:{
+            enabled:false
+        },
+        chart: {
+            type: 'area',
+            backgroundColor:''
+        },
+        title: {
+            text: ''
+        },
+        /*subtitle: {
+         text: 'Source: <a href="http://thebulletin.metapress.com/content/c4120650912x74k7/fulltext.pdf">' +
+         'thebulletin.metapress.com</a>'
+         },*/
+
+        xAxis: {
+            allowDecimals: false,
+            labels: {
+                rotation:65
+            }
+        },
+        yAxis: {
+            //categories:[10000,20000,30000,40000],
+            title: {
+                text: '攻击次数'
+            },
+            labels: {
+                formatter: function () {
+                    return this.value;
+                }
+            }
+        },
+
+        tooltip: {
+            pointFormat: '{series.name} <b>{point.y:,.0f}</b>'
+        },
+        plotOptions: {
+            area: {
+                marker: {
+                    enabled: false,
+                    symbol: 'circle',
+                    radius: 2,
+                    states: {
+                        hover: {
+                            enabled: true
+                        }
+                    }
+                }
+            }
+        },
+        series: [{
+            name: '告警次数',
+            data: [0,0,0,0,0,0,529,1782,1995,2845,2713,2773,2569,3363,2011,1375,15917,37673,125,0,0,0,0,0,]
+        }]
+    });
+
+    var areaRChart=$('#areaRChart2').highcharts();
+    //var cmsa_categorie=[];
+    /*for(var i=0;i<24;i++){
+        cmsa_categorie.push(i);
+    }*/
+    areaRChart.xAxis[0].setCategories(cmsa_categories);
+
 });
