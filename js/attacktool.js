@@ -59,4 +59,149 @@ $(function(){
     });
 
 
+
+    var myChart = echarts.init(document.getElementById('attacktooltype'));
+    var option = {
+        title : {
+            text : '',
+            subtext : ''
+        },
+        tooltip : {
+            trigger: 'item',
+            formatter : function (params) {
+                return params.seriesName + ' （'  + '类目' + params.value[0] + '）<br/>'
+                    + params.value[1] + ', '
+                    + params.value[2];
+            }
+        },
+        toolbox: {
+            show : true,
+            feature : {
+                mark : {show: true},
+                dataView : {show: true, readOnly: false},
+                restore : {show: true},
+                saveAsImage : {show: true}
+            }
+        },
+        dataZoom: {
+            show: true,
+            start : 30,
+            end : 70
+        },
+        legend : {
+            data : ['SQL注入攻击','跨站脚本攻击','漏洞防护','疑似跨站攻击']
+        },
+        dataRange: {
+            min: 0,
+            max: 100,
+            orient: 'horizontal',
+            y: 30,
+            x: 'center',
+            //text:['高','低'],           // 文本，默认为数值文本
+            color:['lightgreen','orange'],
+            splitNumber: 5
+        },
+        grid: {
+            y2: 80
+        },
+        xAxis : [
+            {
+                type : 'time',
+                splitNumber:10
+            }
+        ],
+        yAxis : [
+            {
+                type : 'value'
+            }
+        ],
+        animation: false,
+        series : [
+            {
+                name:'SQL注入攻击',
+                type:'scatter',
+                symbolSize: function (value){
+                    return Math.round(value[2]/10);
+                },
+                data: (function () {
+                    var d = [];
+                    var len = 0;
+                    var now = new Date();
+                    var value;
+                    while (len++ < 150) {
+                        d.push([
+                            new Date(2014, 11, 9, 0, Math.round(Math.random()*10000)),
+                            (Math.random()*30).toFixed(2) - 0,
+                            (Math.random()*100).toFixed(2) - 0
+                        ]);
+                    }
+                    return d;
+                })()
+            },
+            {
+                name:'跨站脚本攻击',
+                type:'scatter',
+                symbolSize: function (value){
+                    return Math.round(value[2]/10);
+                },
+                data: (function () {
+                    var d = [];
+                    var len = 0;
+                    var now = new Date();
+                    var value;
+                    while (len++ < 150) {
+                        d.push([
+                            new Date(2014, 11, 9, 0, Math.round(Math.random()*10000)),
+                            (Math.random()*30).toFixed(2) - 0,
+                            (Math.random()*100).toFixed(2) - 0
+                        ]);
+                    }
+                    return d;
+                })()
+            },
+            {
+                name:'漏洞防护',
+                type:'scatter',
+                symbolSize: function (value){
+                    return Math.round(value[2]/10);
+                },
+                data: (function () {
+                    var d = [];
+                    var len = 0;
+                    var now = new Date();
+                    var value;
+                    while (len++ < 150) {
+                        d.push([
+                            new Date(2014, 11, 9, 0, Math.round(Math.random()*10000)),
+                            (Math.random()*30).toFixed(2) - 0,
+                            (Math.random()*100).toFixed(2) - 0
+                        ]);
+                    }
+                    return d;
+                })()
+            },
+            {
+                name:'疑似跨站攻击',
+                type:'scatter',
+                symbolSize: function (value){
+                    return Math.round(value[2]/10);
+                },
+                data: (function () {
+                    var d = [];
+                    var len = 0;
+                    var now = new Date();
+                    var value;
+                    while (len++ < 150) {
+                        d.push([
+                            new Date(2014, 11, 9, 0, Math.round(Math.random()*10000)),
+                            (Math.random()*30).toFixed(2) - 0,
+                            (Math.random()*100).toFixed(2) - 0
+                        ]);
+                    }
+                    return d;
+                })()
+            }
+        ]
+    };
+    myChart.setOption(option);
 });
